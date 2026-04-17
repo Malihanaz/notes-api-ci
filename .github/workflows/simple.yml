@@ -1,0 +1,32 @@
+name: Simple CI Demo
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Step 1 - Print message
+        run: echo "Hello, GitHub Actions is working!"
+
+      - name: Step 2 - Show date
+        run: date
+
+      - name: Step 3 - List files
+        run: ls -la
+
+      - name: Step 4 - Create a file
+        run: echo "This is a sample file" > sample.txt
+
+      - name: Step 5 - Show file content
+        run: cat sample.txt
+
+      - name: Step 6 - Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sample-file
+          path: sample.txt
